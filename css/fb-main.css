@@ -1,0 +1,342 @@
+﻿html, body {
+	height: 100%;
+	overflow: hidden;
+	font-family: monospace;
+	font-size: 12px;
+	color: #fff
+}
+
+/* Corpo do Jogo */
+#main-game {
+	position: relative;
+	max-width: 767px;
+	height: 100%;
+	min-height: 525px;
+}
+
+
+/* Tela do jogo */
+
+#screen-game {
+	position: absolute;
+	width: 100%;
+	height: 100%;
+}
+
+/* Areas do jogo*/
+
+/* Plano de fundo */
+#background-game {
+	position: absolute;
+	top: 0;
+	width: 100%;
+	height: 80%;
+	background-image: url("../assets/sky.png");
+	background-repeat: repeat-x;
+	background-position: 0px 100%;
+	background-color: #4ec0ca;
+	-webkit-animation: animSky 7s linear infinite;
+	animation: animSky 7s linear infinite;
+}
+
+/* Área de jogo */
+
+#flyarea-game {
+	position: absolute;
+	bottom: 0;
+	height: 420px;
+	width: 100%;
+}
+
+/* Area de tijolos */
+#ceiling {
+	position: absolute;
+	top: -16px;
+	height: 16px;
+	width: 100%;
+	background-image: url("../assets/ceiling.png");
+	-webkit-animation: animCeiling 700ms linear infinite;
+	animation: animCeiling 700ms linear infinite;
+}
+
+/* Rodape */
+#footer-game {
+	position: absolute;
+	bottom: 0;
+	width: 100%;
+	height: 20%;
+	background-image: url("../assets/land.png");
+	background-repeat: repeat-x;
+	background-position: 0px 0px;
+	background-color: #ded895;
+	-webkit-animation: animLand 2515ms linear infinite;
+	animation: animLand 2515ms linear infinite;
+}
+
+/* Score maior */
+#bigscore {
+	position: absolute;
+	top: 20px;
+	left: 150px;
+	z-index: 100;
+}
+
+#bigscore img {
+	display: inline-block;
+	padding: 1px;
+}
+
+/* Tela inicial */
+#splash {
+	position: absolute;
+	opacity: 0;
+	top: 75px;
+	left: 65px;
+	width: 188px;
+	height: 170px;
+	background-image: url("../assets/splash.png");
+	background-repeat: no-repeat;
+}
+
+/* screen points */
+#scoreboard {
+	position: absolute;
+	display: none;
+	opacity: 0;
+	top: 62px;
+	left: 43px;
+	width: 236px;
+	height: 280px;
+	background-image: url("../assets/scoreboard.png");
+	background-repeat: no-repeat;
+	z-index: 1000;
+}
+
+/* Medalhas */
+#medal {
+	position: absolute;
+	opacity: 0;
+	top: 114px;
+	left: 32px;
+	width: 44px;
+	height: 44px;
+}
+
+/* Pontos obtidos */
+#currentscore {
+	position: absolute;
+	top: 105px;
+	left: 107px;
+	width: 104px;
+	height: 14px;
+	text-align: right;
+}
+
+#currentscore img {
+	padding-left: 2px;
+}
+
+/* Maior pontuação já obtida */
+#highscore {
+	position: absolute;
+	top: 147px;
+	left: 107px;
+	width: 104px;
+	height: 14px;
+	text-align: right;
+}
+
+#highscore img {
+	padding-left: 2px;
+}
+
+/* Tela de recomeço */
+#replay {
+	position: absolute;
+	opacity: 0;
+	top: 205px;
+	left: 65px;
+	height: 115px;
+	width: 70px;
+	cursor: pointer;
+}
+/* // HACK PARA COMPUTAR AS BORDAS DOS SPRITES */
+.boudingbox {
+	position: absolute;
+	display: none;
+	top: 0;
+	left: 0;
+	width: 0;
+	height: 0;
+	border: 1px solid red;
+}
+/* Configuração da posição inicial do bird */
+#player {
+	left: 60px;
+	top: 200px;
+}
+
+/* bird */
+.bird {
+	position: absolute;
+	width: 34px;
+	height: 24px;
+	background-image: url("../assets/bird.png");
+	-webkit-animation: animBird 300ms steps(4) infinite;
+	animation: animBird 300ms steps(4) infinite;	
+}
+/* Configuração da posição e animação do cano */
+.pipe {
+	position: absolute;
+	left: -100px;
+	width: 52px;
+	height: 100%;
+	z-index: 10;
+
+	-webkit-animation: animPipe 755ms infinite;
+	animation: animPipe 755ms infinite;	
+}
+
+/* Conigurações para o cano do topo */
+.pipe_upper {
+	position: absolute;
+	top: 0;
+	width: 52px;
+	background-image: url('../assets/pipe.png');
+	background-repeat: repeat-y;
+	background-position: center;
+}
+
+/* Configuração a borda do cano e a boca do cano */
+.pipe_upper:after {
+	content: "";
+	position: absolute;
+	bottom: 0;
+	width: 52px;
+	height: 26px;
+	background-image: url('../assets/pipe-down.png');
+}
+
+/* Configuração para o cano da base */
+.pipe_lower {
+	position: absolute;
+	bottom: 0;
+	width: 52px;
+	background-image: url('../assets/pipe.png');
+	background-repeat: repeat-y;
+	background-position: center;
+}
+
+/* Configuração para a boca do cano da base */
+.pipe_lower:after {
+	content: "";
+	position: absolute;
+	top: 0;
+	width: 52px;
+	height: 26px
+	background-image: url('../assets/pipe-up.png');
+}
+
+/* Animação de fundo */
+@-webkit-keyframes animLand {
+	0% { background-position: 0px 0px; }
+	100% { background-position: -335px 0px;}
+}
+
+@keyframes animLand {
+	0% { background-position: 0px 0px; }
+	100% { background-position: -335px 0px;}
+}
+
+/* Animação de ceu */
+
+@-webkit-keyframes animSky {
+	0% { background-position: 0px 100%; }
+	100% { background-position: -275px 100%;}
+}
+
+@-moz-keyframes animSky {
+	0% { background-position: 0px 100%; }
+	100% { background-position: -275px 100%;}
+}
+
+@-webkit-keyframes animSky {
+	0% { background-position: 0px 100%; }
+	100% { background-position: -275px 100%;}
+}
+
+@-o-keyframes animSky {
+	0% { background-position: 0px 100%; }
+	100% { background-position: -275px 100%;}
+}
+
+@keyframes animSky {
+	0% { background-position: 0px 100%; }
+	100% { background-position: -275px 100%;}
+}
+
+/* Animação do bird */
+
+@-webkit-keyframes animBird {
+	0% { background-position: 0px 0px; }
+	100% { background-position: 0px -96px;}
+}
+
+@-moz-keyframes animBird {
+	0% { background-position: 0px 0px; }
+	100% { background-position: 0px -96px;}
+}
+
+@-o-keyframes animBird {
+	0% { background-position: 0px 0px; }
+	100% { background-position: 0px -96px;}
+}
+
+@keyframes animBird {
+	0% { background-position: 0px 0px; }
+	100% { background-position: 0px -96px;}
+}
+
+/* Animação do canos */
+
+@-webkit-keyframes animPipe {
+	0% { left: 900px; }
+	100% { left: -100px;}
+}
+
+@-moz-keyframes animPipe {
+	0% { left: 900px; }
+	100% { left: -100px;}
+}
+
+@-o-keyframes animPipe {
+	0% { left: 900px; }
+	100% { left: -100px;}
+}
+
+@keyframes animPipe {
+	0% { left: 900px; }
+	100% { left: -100px;}
+}
+
+/* Animação dos blocos do muro */
+
+@-webkit-keyframes animCeiling {
+	0% { background-position: 0px 0px; }
+	100% { background-position: -63px 0px;}
+}
+
+@-moz-keyframes animCeiling {
+	0% { background-position: 0px 0px; }
+	100% { background-position: -63px 0px;}
+}
+
+@-o-keyframes animCeiling {
+	0% { background-position: 0px 0px; }
+	100% { background-position: -63px 0px;}
+}
+
+@keyframes animCeiling {
+	0% { background-position: 0px 0px; }
+	100% { background-position: -63px 0px;}
+}
